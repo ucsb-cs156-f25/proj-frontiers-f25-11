@@ -1,4 +1,5 @@
 import { Button, Card } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function SignInCard({
   url,
@@ -33,3 +34,12 @@ export default function SignInCard({
     </Card>
   );
 }
+
+SignInCard.propTypes = {
+  url: PropTypes.string.isRequired,
+  Icon: PropTypes.elementType.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  testid: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+};

@@ -14,6 +14,7 @@ import RosterStudentForm from "main/components/RosterStudent/RosterStudentForm";
 import RosterStudentTable from "main/components/RosterStudent/RosterStudentTable";
 import Modal from "react-bootstrap/Modal";
 import DroppedStudentsTable from "main/components/RosterStudent/DroppedStudentsTable";
+import PropTypes from "prop-types";
 
 export default function EnrollmentTabComponent({
   courseId,
@@ -238,3 +239,9 @@ export default function EnrollmentTabComponent({
     </div>
   );
 }
+
+EnrollmentTabComponent.propTypes = {
+  courseId: PropTypes.string.isRequired,
+  testIdPrefix: PropTypes.string.isRequired,
+  currentUser: PropTypes.object.isRequired,
+};

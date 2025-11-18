@@ -3,6 +3,7 @@ import RoleEmailForm from "main/components/Users/RoleEmailForm";
 import { useNavigate } from "react-router";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
+import PropTypes from "prop-types";
 
 export default function InstructorsCreatePage({ storybook = false }) {
   const navigation = useNavigate();
@@ -39,3 +40,7 @@ export default function InstructorsCreatePage({ storybook = false }) {
     </BasicLayout>
   );
 }
+
+InstructorsCreatePage.propTypes = {
+  storybook: PropTypes.bool,
+};

@@ -9,6 +9,7 @@ import {
 import { Button } from "react-bootstrap";
 import SortCaret from "main/components/Common/SortCaret";
 import { convertOldStyleColumnsToNewStyle } from "main/components/OurTableUtils";
+import PropTypes from "prop-types";
 
 function OurTable({ data, columns, testid = "testid" }) {
   const newColumns = convertOldStyleColumnsToNewStyle(columns);
@@ -107,3 +108,9 @@ export function ButtonColumn(label, variant, callback, testid) {
   });
   return buttonColumn;
 }
+
+OurTable.propTypes = {
+  data: PropTypes.array.isRequired,
+  columns: PropTypes.array.isRequired,
+  testid: PropTypes.string,
+};

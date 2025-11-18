@@ -1,4 +1,5 @@
 import { getSortCaret } from "main/components/Common/SortCaretUtils";
+import PropTypes from "prop-types";
 
 export default function SortCaret({ header, testId = "testid" }) {
   return (
@@ -7,3 +8,12 @@ export default function SortCaret({ header, testId = "testid" }) {
     </span>
   );
 }
+
+SortCaret.propTypes = {
+  header: PropTypes.shape({
+    column: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  testId: PropTypes.string,
+};

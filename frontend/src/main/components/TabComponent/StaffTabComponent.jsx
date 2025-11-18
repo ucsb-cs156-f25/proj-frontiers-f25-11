@@ -14,6 +14,7 @@ import {
 import CourseStaffForm from "main/components/CourseStaff/CourseStaffForm";
 import CourseStaffTable from "main/components/CourseStaff/CourseStaffTable";
 import Modal from "react-bootstrap/Modal";
+import PropTypes from "prop-types";
 
 export default function StaffTabComponent({
   courseId,
@@ -163,3 +164,8 @@ export default function StaffTabComponent({
     </div>
   );
 }
+StaffTabComponent.propTypes = {
+  courseId: PropTypes.string.isRequired,
+  testIdPrefix: PropTypes.string.isRequired,
+  currentUser: PropTypes.object.isRequired,
+};

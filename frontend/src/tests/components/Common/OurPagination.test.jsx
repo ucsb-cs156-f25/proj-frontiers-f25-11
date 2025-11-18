@@ -2,6 +2,7 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import OurPagination from "main/components/Common/OurPagination";
 import { useState } from "react";
 import { vi } from "vitest";
+import PropTypes from "prop-types";
 
 const checkTestIdsInOrder = (testIds) => {
   const links = screen.getAllByTestId(/OurPagination-/);
@@ -27,6 +28,10 @@ const PaginationWrapper = ({ beginActivePage, args }) => {
       {...args}
     />
   );
+};
+PaginationWrapper.propTypes = {
+  beginActivePage: PropTypes.number.isRequired,
+  args: PropTypes.object,
 };
 
 describe("OurPagination tests", () => {

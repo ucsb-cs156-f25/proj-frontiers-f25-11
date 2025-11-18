@@ -1,5 +1,6 @@
 import CourseModal from "main/components/Courses/CourseModal";
 import React from "react";
+import PropTypes from "prop-types";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import coursesFixtures from "fixtures/coursesFixtures";
 import { vi } from "vitest";
@@ -151,7 +152,9 @@ describe("CourseModal Tests", () => {
         />
       </div>
     );
-
+    MockCourseModal.propTypes = {
+      initialContents: PropTypes.object,
+    };
     // Start with no initial contents
     const { rerender } = render(<MockCourseModal initialContents={null} />);
 
@@ -191,7 +194,9 @@ describe("CourseModal Tests", () => {
         />
       </div>
     );
-
+    MockCourseModal.propTypes = {
+      initialContents: PropTypes.object,
+    };
     // Start with first course
     const { rerender } = render(
       <MockCourseModal initialContents={coursesFixtures.severalCourses[0]} />,
@@ -233,7 +238,9 @@ describe("CourseModal Tests", () => {
         />
       </div>
     );
-
+    MockCourseModal.propTypes = {
+      initialContents: PropTypes.object,
+    };
     // Start with undefined initial contents
     const { rerender } = render(
       <MockCourseModal initialContents={undefined} />,

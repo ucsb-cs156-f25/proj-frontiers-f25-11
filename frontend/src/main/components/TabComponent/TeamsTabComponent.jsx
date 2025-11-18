@@ -13,6 +13,7 @@ import TeamsCSVUploadForm from "main/components/Teams/TeamsCSVUploadForm";
 import TeamsForm from "main/components/Teams/TeamsForm";
 import Modal from "react-bootstrap/Modal";
 import TeamsTable from "main/components/Teams/TeamsTable";
+import PropTypes from "prop-types";
 
 export default function TeamsTabComponent({
   courseId,
@@ -276,3 +277,9 @@ export default function TeamsTabComponent({
     </div>
   );
 }
+
+TeamsTabComponent.propTypes = {
+  courseId: PropTypes.string.isRequired,
+  testIdPrefix: PropTypes.string.isRequired,
+  currentUser: PropTypes.object.isRequired,
+};

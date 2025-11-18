@@ -2,6 +2,7 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import regexUtils from "main/utils/regexUtils";
+import PropTypes from "prop-types";
 
 function RosterStudentForm({
   initialContents,
@@ -121,5 +122,16 @@ function RosterStudentForm({
     </Form>
   );
 }
+RosterStudentForm.propTypes = {
+  initialContents: PropTypes.shape({
+    studentId: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+  }),
+  submitAction: PropTypes.func.isRequired,
+  buttonLabel: PropTypes.string,
+  cancelDisabled: PropTypes.bool,
+};
 
 export default RosterStudentForm;

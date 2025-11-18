@@ -7,6 +7,7 @@ import { hasRole } from "main/utils/currentUser";
 import Modal from "react-bootstrap/Modal";
 import CourseStaffForm from "main/components/CourseStaff/CourseStaffForm";
 import { toast } from "react-toastify";
+import PropTypes from "prop-types";
 
 export default function CourseStaffTable({
   staff,
@@ -231,3 +232,23 @@ export default function CourseStaffTable({
     </>
   );
 }
+
+CourseStaffTable.propTypes = {
+  staff: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      email: PropTypes.string,
+      githubLogin: PropTypes.string,
+      orgStatus: PropTypes.string,
+    }),
+  ).isRequired,
+  currentUser: PropTypes.shape({
+    root: PropTypes.shape({
+      rolesList: PropTypes.arrayOf(PropTypes.string),
+    }),
+  }).isRequired,
+  courseId: PropTypes.string.isRequired,
+  testIdPrefix: PropTypes.string,
+};

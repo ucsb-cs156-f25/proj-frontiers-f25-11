@@ -1,5 +1,6 @@
 import OurTable from "main/components/OurTable";
 import { Tooltip, OverlayTrigger, Button, Spinner } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const columns = [
   {
@@ -159,3 +160,19 @@ export default function CoursesTable({
     <OurTable data={courses} columns={columnsWithStatus} testid={testId} />
   );
 }
+
+CoursesTable.propTypes = {
+  courses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.any.isRequired,
+      courseName: PropTypes.string.isRequired,
+      term: PropTypes.string.isRequired,
+      school: PropTypes.string.isRequired,
+      studentStatus: PropTypes.string.isRequired,
+      orgName: PropTypes.string,
+    }),
+  ).isRequired,
+  testId: PropTypes.string.isRequired,
+  joinCallback: PropTypes.func.isRequired,
+  isLoading: PropTypes.func.isRequired,
+};

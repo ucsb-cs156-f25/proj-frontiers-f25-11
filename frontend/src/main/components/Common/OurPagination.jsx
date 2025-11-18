@@ -1,5 +1,6 @@
 import React from "react";
 import { Pagination } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const OurPagination = ({
   currentActivePage,
@@ -101,6 +102,13 @@ const OurPagination = ({
       <Pagination.Next onClick={nextPage} data-testid={`${testId}-next`} />
     </Pagination>
   );
+};
+
+OurPagination.propTypes = {
+  currentActivePage: PropTypes.number.isRequired,
+  updateActivePage: PropTypes.func.isRequired,
+  totalPages: PropTypes.number,
+  testId: PropTypes.string,
 };
 
 export default OurPagination;

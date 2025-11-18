@@ -1,6 +1,7 @@
 import React from "react";
 import OurTable from "main/components/OurTable";
 import { formatTime } from "main/utils/dateUtils";
+import PropTypes from "prop-types";
 
 export default function JobsTable({ jobs }) {
   const columns = [
@@ -40,3 +41,15 @@ export default function JobsTable({ jobs }) {
 
   return <OurTable data={jobs} columns={columns} testid={testid} />;
 }
+
+JobsTable.propTypes = {
+  jobs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      createdAt: PropTypes.string.isRequired,
+      updatedAt: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      log: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};

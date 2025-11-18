@@ -11,6 +11,7 @@ import { useBackend } from "main/utils/useBackend";
 import Modal from "react-bootstrap/Modal";
 import { ModalBody, ModalHeader } from "react-bootstrap";
 import TeamMemberForm from "main/components/Teams/TeamMemberForm";
+import PropTypes from "prop-types";
 
 export default function TeamsTable({
   teams,
@@ -223,3 +224,31 @@ export default function TeamsTable({
     </>
   );
 }
+
+TeamsTable.propTypes = {
+  teams: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      teamMembers: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          rosterStudent: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            firstName: PropTypes.string.isRequired,
+            lastName: PropTypes.string.isRequired,
+            email: PropTypes.string.isRequired,
+            githubLogin: PropTypes.string.isRequired,
+          }).isRequired,
+        }),
+      ).isRequired,
+    }),
+  ).isRequired,
+  currentUser: PropTypes.shape({
+    root: PropTypes.shape({
+      rolesList: PropTypes.arrayOf(PropTypes.string),
+    }),
+  }).isRequired,
+  courseId: PropTypes.string.isRequired,
+  testIdPrefix: PropTypes.string,
+};

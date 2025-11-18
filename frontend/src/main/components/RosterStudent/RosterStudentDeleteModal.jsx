@@ -1,6 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function RosterStudentDeleteModal({
   onSubmitAction,
@@ -53,3 +54,9 @@ export default function RosterStudentDeleteModal({
     </Modal>
   );
 }
+
+RosterStudentDeleteModal.propTypes = {
+  onSubmitAction: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  toggleShowModal: PropTypes.func.isRequired,
+};

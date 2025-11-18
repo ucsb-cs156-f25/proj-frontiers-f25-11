@@ -1,4 +1,5 @@
 import { FaGear, FaGithub } from "react-icons/fa6";
+import PropTypes from "prop-types";
 
 export default function GithubSettingIcon({
   size = 24,
@@ -30,3 +31,10 @@ export default function GithubSettingIcon({
     </span>
   );
 }
+
+GithubSettingIcon.propTypes = {
+  size: PropTypes.number,
+  gearColor: PropTypes.string,
+  githubColor: PropTypes.string,
+  "data-testid": PropTypes.string,
+};

@@ -2,6 +2,7 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import regexUtils from "main/utils/regexUtils";
+import PropTypes from "prop-types";
 
 function CourseStaffForm({
   initialContents,
@@ -106,5 +107,17 @@ function CourseStaffForm({
     </Form>
   );
 }
+
+CourseStaffForm.propTypes = {
+  initialContents: PropTypes.shape({
+    email: PropTypes.string,
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+  }),
+  submitAction: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  buttonLabel: PropTypes.string,
+  cancelDisabled: PropTypes.bool,
+};
 
 export default CourseStaffForm;

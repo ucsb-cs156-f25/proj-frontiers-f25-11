@@ -1,6 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import PropTypes from "prop-types";
 
 function TeamsForm({
   initialContents,
@@ -53,5 +54,12 @@ function TeamsForm({
     </Form>
   );
 }
+
+TeamsForm.propTypes = {
+  initialContents: PropTypes.object,
+  submitAction: PropTypes.func.isRequired,
+  buttonLabel: PropTypes.string,
+  cancelDisabled: PropTypes.bool,
+};
 
 export default TeamsForm;

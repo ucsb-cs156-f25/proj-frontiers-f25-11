@@ -2,6 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 
 function CourseModal({
   onSubmitAction,
@@ -103,5 +104,18 @@ function CourseModal({
     </Modal>
   );
 }
+
+CourseModal.propTypes = {
+  onSubmitAction: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  toggleShowModal: PropTypes.func.isRequired,
+  initialContents: PropTypes.shape({
+    courseName: PropTypes.string,
+    term: PropTypes.string,
+    school: PropTypes.string,
+  }),
+  buttonText: PropTypes.string,
+  modalTitle: PropTypes.string,
+};
 
 export default CourseModal;

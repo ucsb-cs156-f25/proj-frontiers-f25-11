@@ -4,6 +4,7 @@ import { hasRole } from "main/utils/currentUser";
 import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost";
 import GoogleLogin from "main/components/Nav/GoogleLogin";
 import GithubLogin from "main/components/Nav/GithubLogin";
+import PropTypes from "prop-types";
 
 export default function AppNavbar({
   currentUser,
@@ -98,3 +99,17 @@ export default function AppNavbar({
     </>
   );
 }
+
+AppNavbar.propTypes = {
+  currentUser: PropTypes.shape({
+    root: PropTypes.shape({
+      rolesList: PropTypes.arrayOf(PropTypes.string),
+    }),
+  }).isRequired,
+  systemInfo: PropTypes.shape({
+    showSwaggerUILink: PropTypes.bool,
+    springH2ConsoleEnabled: PropTypes.bool,
+  }),
+  doLogout: PropTypes.func,
+  currentUrl: PropTypes.string,
+};

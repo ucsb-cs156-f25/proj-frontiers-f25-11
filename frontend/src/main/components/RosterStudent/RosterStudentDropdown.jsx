@@ -1,4 +1,5 @@
 import { Form } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function RosterStudentDropdown({ rosterStudents, register }) {
   return (
@@ -19,3 +20,14 @@ export default function RosterStudentDropdown({ rosterStudents, register }) {
     </Form.Control>
   );
 }
+
+RosterStudentDropdown.propTypes = {
+  rosterStudents: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  register: PropTypes.func.isRequired,
+};

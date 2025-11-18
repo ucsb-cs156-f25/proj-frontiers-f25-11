@@ -1,5 +1,6 @@
 import { Button, Navbar } from "react-bootstrap";
 import { Link } from "react-router";
+import PropTypes from "prop-types";
 
 export default function GithubLogin({ currentUser, systemInfo }) {
   var githubOauthLogin =
@@ -22,3 +23,17 @@ export default function GithubLogin({ currentUser, systemInfo }) {
     </>
   );
 }
+
+GithubLogin.propTypes = {
+  currentUser: PropTypes.shape({
+    loggedIn: PropTypes.bool,
+    root: PropTypes.shape({
+      user: PropTypes.shape({
+        githubLogin: PropTypes.string,
+      }),
+    }),
+  }),
+  systemInfo: PropTypes.shape({
+    githubOauthLogin: PropTypes.string,
+  }),
+};

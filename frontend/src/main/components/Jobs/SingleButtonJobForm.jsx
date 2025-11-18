@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function SingleButtonJobForm({ callback, text, testid }) {
   return (
@@ -7,3 +8,9 @@ export default function SingleButtonJobForm({ callback, text, testid }) {
     </Button>
   );
 }
+
+SingleButtonJobForm.propTypes = {
+  callback: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  testid: PropTypes.string.isRequired,
+};

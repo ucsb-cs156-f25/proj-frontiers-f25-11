@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { FaCheckCircle } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 function RepositorySelectionForm({ collections = [] }) {
   const [url, setURL] = useState("");
@@ -144,4 +145,9 @@ function RepositorySelectionForm({ collections = [] }) {
     </Form>
   );
 }
+
+RepositorySelectionForm.propTypes = {
+  collections: PropTypes.arrayOf(PropTypes.string),
+};
+
 export default RepositorySelectionForm;

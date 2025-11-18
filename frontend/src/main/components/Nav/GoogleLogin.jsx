@@ -1,6 +1,7 @@
 import { Button, Navbar } from "react-bootstrap";
 import { Link } from "react-router";
 import HelpMenu from "main/components/Nav/HelpMenu";
+import PropTypes from "prop-types";
 
 export default function GoogleLogin({ currentUser, handleLogin, doLogout }) {
   return (
@@ -22,3 +23,16 @@ export default function GoogleLogin({ currentUser, handleLogin, doLogout }) {
     </>
   );
 }
+
+GoogleLogin.propTypes = {
+  currentUser: PropTypes.shape({
+    loggedIn: PropTypes.bool,
+    root: PropTypes.shape({
+      user: PropTypes.shape({
+        email: PropTypes.string,
+      }),
+    }),
+  }),
+  handleLogin: PropTypes.func.isRequired,
+  doLogout: PropTypes.func.isRequired,
+};

@@ -1,6 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import PropTypes from "prop-types";
 
 function RoleEmailForm({ submitAction, buttonLabel = "Create" }) {
   // Stryker disable all
@@ -51,5 +52,10 @@ function RoleEmailForm({ submitAction, buttonLabel = "Create" }) {
     </Form>
   );
 }
+
+RoleEmailForm.propTypes = {
+  submitAction: PropTypes.func.isRequired,
+  buttonLabel: PropTypes.string,
+};
 
 export default RoleEmailForm;

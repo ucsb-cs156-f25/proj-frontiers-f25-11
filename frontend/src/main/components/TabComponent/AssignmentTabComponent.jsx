@@ -2,7 +2,7 @@ import IndividualAssignmentForm from "main/components/Assignments/IndividualAssi
 import { Card, Row } from "react-bootstrap";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
-
+import PropTypes from "prop-types";
 export default function AssignmentTabComponent({ courseId }) {
   const onSuccessAssignment = () => {
     toast("Repository creation successfully started.");
@@ -38,3 +38,7 @@ export default function AssignmentTabComponent({ courseId }) {
     </Row>
   );
 }
+
+AssignmentTabComponent.propTypes = {
+  courseId: PropTypes.string.isRequired,
+};

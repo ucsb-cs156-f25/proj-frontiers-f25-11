@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import coursesFixtures from "fixtures/coursesFixtures";
@@ -28,6 +29,9 @@ const QueryWrapper = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
+};
+QueryWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 const Template = () => (

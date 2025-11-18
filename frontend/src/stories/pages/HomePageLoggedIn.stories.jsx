@@ -2,6 +2,7 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import PropTypes from "prop-types";
 
 import HomePageLoggedIn from "main/pages/HomePageLoggedIn";
 import coursesFixtures from "fixtures/coursesFixtures";
@@ -24,6 +25,9 @@ const QueryWrapper = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
+};
+QueryWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 const Template = () => (

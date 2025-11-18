@@ -1,4 +1,5 @@
 import OurTable from "main/components/OurTable";
+import PropTypes from "prop-types";
 
 const columns = [
   {
@@ -38,3 +39,16 @@ const columns = [
 export default function UsersTable({ users }) {
   return <OurTable data={users} columns={columns} testid={"UsersTable"} />;
 }
+
+UsersTable.propTypes = {
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      givenName: PropTypes.string,
+      familyName: PropTypes.string,
+      email: PropTypes.string,
+      admin: PropTypes.bool,
+      instructor: PropTypes.bool,
+    }),
+  ).isRequired,
+};

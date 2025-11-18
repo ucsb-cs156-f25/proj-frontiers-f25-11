@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function RosterStudentCSVUploadForm({ submitAction }) {
   const {
@@ -35,3 +36,7 @@ export default function RosterStudentCSVUploadForm({ submitAction }) {
     </Form>
   );
 }
+
+RosterStudentCSVUploadForm.propTypes = {
+  submitAction: PropTypes.func.isRequired,
+};

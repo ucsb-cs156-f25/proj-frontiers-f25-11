@@ -1,4 +1,5 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function AppNavbarLocalhost({ url }) {
   return (
@@ -33,3 +34,7 @@ export default function AppNavbarLocalhost({ url }) {
     </>
   );
 }
+
+AppNavbarLocalhost.propTypes = {
+  url: PropTypes.string.isRequired,
+};

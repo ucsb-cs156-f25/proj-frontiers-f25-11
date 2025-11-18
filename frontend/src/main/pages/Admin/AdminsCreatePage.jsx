@@ -3,6 +3,7 @@ import RoleEmailForm from "main/components/Users/RoleEmailForm";
 import { Navigate } from "react-router";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
+import PropTypes from "prop-types";
 
 export default function AdminsCreatePage({ storybook = false }) {
   const objectToAxiosParams = (admin) => ({
@@ -43,3 +44,7 @@ export default function AdminsCreatePage({ storybook = false }) {
     </BasicLayout>
   );
 }
+
+AdminsCreatePage.propTypes = {
+  storybook: PropTypes.bool,
+};

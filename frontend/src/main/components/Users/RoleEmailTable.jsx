@@ -4,6 +4,7 @@ import OurTable from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 import { Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function RoleEmailTable({
   data,
@@ -76,3 +77,16 @@ export default function RoleEmailTable({
     />
   );
 }
+
+RoleEmailTable.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      isInAdminEmails: PropTypes.bool.isRequired,
+    }),
+  ).isRequired,
+  deleteEndpoint: PropTypes.string,
+  getEndpoint: PropTypes.string,
+  testIdPrefix: PropTypes.string,
+  customDeleteCallback: PropTypes.func,
+};

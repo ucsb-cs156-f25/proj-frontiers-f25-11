@@ -10,6 +10,7 @@ import UpdateInstructorForm from "main/components/Courses/UpdateInstructorForm";
 import CourseModal from "main/components/Courses/CourseModal";
 import Modal from "react-bootstrap/Modal";
 import { useLocation } from "react-router";
+import PropTypes from "prop-types";
 
 export default function InstructorCoursesTable({
   courses,
@@ -375,3 +376,30 @@ export default function InstructorCoursesTable({
     </>
   );
 }
+
+InstructorCoursesTable.propTypes = {
+  courses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      courseName: PropTypes.string.isRequired,
+      term: PropTypes.string.isRequired,
+      school: PropTypes.string.isRequired,
+      instructorEmail: PropTypes.string.isRequired,
+      numStudents: PropTypes.number,
+      numStaff: PropTypes.number,
+      orgName: PropTypes.string,
+      installationId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    }),
+  ).isRequired,
+  storybook: PropTypes.bool,
+  currentUser: PropTypes.shape({
+    root: PropTypes.shape({
+      user: PropTypes.shape({
+        email: PropTypes.string.isRequired,
+      }).isRequired,
+      rolesList: PropTypes.arrayOf(PropTypes.string),
+    }).isRequired,
+  }).isRequired,
+  testId: PropTypes.string,
+  enableInstructorUpdate: PropTypes.bool,
+};

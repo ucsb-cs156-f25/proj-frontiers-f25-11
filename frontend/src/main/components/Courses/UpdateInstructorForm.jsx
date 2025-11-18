@@ -1,5 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
 export default function UpdateInstructorForm({
   initialContents,
@@ -48,3 +49,11 @@ export default function UpdateInstructorForm({
     </Form>
   );
 }
+
+UpdateInstructorForm.propTypes = {
+  initialContents: PropTypes.shape({
+    courseName: PropTypes.string,
+    instructorEmail: PropTypes.string,
+  }),
+  handleUpdateInstructor: PropTypes.func.isRequired,
+};

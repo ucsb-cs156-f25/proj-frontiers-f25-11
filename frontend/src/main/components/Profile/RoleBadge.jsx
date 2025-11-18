@@ -1,4 +1,5 @@
 import { Badge } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function RoleBadge({ role, currentUser }) {
   const roles = currentUser.root.roles.map((o) => o.authority);
@@ -12,3 +13,16 @@ export default function RoleBadge({ role, currentUser }) {
     <span data-testid={`role-missing-${lcrole}`}></span>
   );
 }
+
+RoleBadge.propTypes = {
+  role: PropTypes.string.isRequired,
+  currentUser: PropTypes.shape({
+    root: PropTypes.shape({
+      roles: PropTypes.arrayOf(
+        PropTypes.shape({
+          authority: PropTypes.string,
+        }),
+      ),
+    }),
+  }).isRequired,
+};

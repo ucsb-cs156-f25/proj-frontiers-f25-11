@@ -2,6 +2,7 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import RosterStudentDropdown from "main/components/RosterStudent/RosterStudentDropdown";
+import PropTypes from "prop-types";
 
 function TeamMemberForm({
   initialContents,
@@ -52,5 +53,13 @@ function TeamMemberForm({
     </Form>
   );
 }
+
+TeamMemberForm.propTypes = {
+  initialContents: PropTypes.object,
+  rosterStudents: PropTypes.arrayOf(PropTypes.object).isRequired,
+  submitAction: PropTypes.func.isRequired,
+  buttonLabel: PropTypes.string,
+  cancelDisabled: PropTypes.bool,
+};
 
 export default TeamMemberForm;

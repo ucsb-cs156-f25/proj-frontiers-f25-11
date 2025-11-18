@@ -3,6 +3,7 @@ import Footer from "main/components/Nav/Footer";
 import AppNavbar from "main/components/Nav/AppNavbar";
 import { useCurrentUser, useLogout } from "main/utils/currentUser";
 import { useSystemInfo } from "main/utils/systemInfo";
+import PropTypes from "prop-types";
 
 export default function BasicLayout({ children }) {
   const currentUser = useCurrentUser();
@@ -24,3 +25,6 @@ export default function BasicLayout({ children }) {
     </div>
   );
 }
+BasicLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};

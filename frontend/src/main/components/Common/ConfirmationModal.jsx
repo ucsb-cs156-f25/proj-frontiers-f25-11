@@ -1,5 +1,6 @@
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export default function ConfirmationModal({
   children,
@@ -45,3 +46,10 @@ export default function ConfirmationModal({
     </Modal>
   );
 }
+
+ConfirmationModal.propTypes = {
+  children: PropTypes.node.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  onYes: PropTypes.func.isRequired,
+};

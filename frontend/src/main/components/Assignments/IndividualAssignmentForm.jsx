@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button, Form } from "react-bootstrap";
-
+import PropTypes from "prop-types";
 export default function IndividualAssignmentForm({ submitAction }) {
   const {
     register,
@@ -61,3 +61,7 @@ export default function IndividualAssignmentForm({ submitAction }) {
     </Form>
   );
 }
+
+IndividualAssignmentForm.propTypes = {
+  submitAction: PropTypes.func.isRequired,
+};

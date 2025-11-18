@@ -1,6 +1,7 @@
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
+import PropTypes from "prop-types";
 
 export default function DroppedStudentsTable({ students, courseId }) {
   const columns = [
@@ -65,3 +66,16 @@ export default function DroppedStudentsTable({ students, courseId }) {
     />
   );
 }
+
+DroppedStudentsTable.propTypes = {
+  students: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      studentId: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      email: PropTypes.string,
+    }),
+  ).isRequired,
+  courseId: PropTypes.string.isRequired,
+};

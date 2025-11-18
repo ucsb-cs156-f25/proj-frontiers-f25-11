@@ -9,6 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import RosterStudentForm from "main/components/RosterStudent/RosterStudentForm";
 import { toast } from "react-toastify";
 import RosterStudentDeleteModal from "main/components/RosterStudent/RosterStudentDeleteModal";
+import PropTypes from "prop-types";
 
 export default function RosterStudentTable({
   students,
@@ -254,3 +255,25 @@ export default function RosterStudentTable({
     </>
   );
 }
+
+RosterStudentTable.propTypes = {
+  students: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      studentId: PropTypes.string,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      githubLogin: PropTypes.string,
+      teams: PropTypes.arrayOf(PropTypes.string),
+      orgStatus: PropTypes.string,
+    }),
+  ).isRequired,
+  currentUser: PropTypes.shape({
+    root: PropTypes.shape({
+      rolesList: PropTypes.arrayOf(PropTypes.string),
+    }),
+  }).isRequired,
+  courseId: PropTypes.string.isRequired,
+  testIdPrefix: PropTypes.string,
+};
