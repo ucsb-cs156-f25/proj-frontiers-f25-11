@@ -952,10 +952,10 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    Instructor instructor = instructorRepository.findById(email).orElse(null);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    String sanitizedEmail = CanonicalFormConverter.convertToValidEmail(email);</span></pre></td></tr>
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@382d820_68'/>
 68
 </td>
@@ -966,23 +966,21 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    Instructor instructor = instructorRepository.findById(sanitizedEmail).orElse(null);</span></pre></td></tr>
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@382d820_69'/>
 69
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_69'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_69'></a>
 <span>
-1. deleteInstructor : negated conditional &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    if (instructor == null) {</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 <tr>
 <td class='covered'>
@@ -993,6 +991,22 @@
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_70'>1</a>
 <span>
+1. deleteInstructor : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    if (instructor == null) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@382d820_71'/>
+71
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_71'>1</a>
+<span>
 1. deleteInstructor : replaced return value with null for edu/ucsb/cs156/frontiers/controllers/InstructorsController::deleteInstructor &rarr; KILLED<br/>
 
 </span>
@@ -1002,20 +1016,6 @@
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@382d820_71'/>
-71
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_71'></a>
-<span>
-</span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>          .body(String.format(&#34;Instructor with email %s not found.&#34;, email));</span></pre></td></tr>
-
-<tr>
-<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@382d820_72'/>
 72
 </td>
@@ -1026,7 +1026,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>          .body(String.format(&#34;Instructor with email %s not found.&#34;, sanitizedEmail));</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1040,23 +1040,21 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@382d820_74'/>
 74
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_74'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_74'></a>
 <span>
-1. deleteInstructor : removed call to edu/ucsb/cs156/frontiers/repositories/InstructorRepository::delete &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    instructorRepository.delete(instructor);</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 <tr>
 <td class='covered'>
@@ -1067,6 +1065,22 @@
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_75'>1</a>
 <span>
+1. deleteInstructor : removed call to edu/ucsb/cs156/frontiers/repositories/InstructorRepository::delete &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    instructorRepository.delete(instructor);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@382d820_76'/>
+76
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_76'>1</a>
+<span>
 1. deleteInstructor : replaced return value with null for edu/ucsb/cs156/frontiers/controllers/InstructorsController::deleteInstructor &rarr; KILLED<br/>
 
 </span>
@@ -1076,20 +1090,6 @@
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@382d820_76'/>
-76
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_76'></a>
-<span>
-</span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>        .body(String.format(&#34;Instructor with email %s deleted.&#34;, email));</span></pre></td></tr>
-
-<tr>
-<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@382d820_77'/>
 77
 </td>
@@ -1100,7 +1100,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        .body(String.format(&#34;Instructor with email %s deleted.&#34;, sanitizedEmail));</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1110,6 +1110,20 @@
 <td class=''>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@382d820_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@382d820_79'></a>
 <span>
 </span>
 </span>
@@ -1143,35 +1157,24 @@
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@382d820_69'>69</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@382d820_69'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteInstructor<br/><b>Killed by : </b>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:admin_try_to_delete_a_instructor_not_found()]</span></span> negated conditional &rarr; KILLED</span>
-</div> 
-</td>
-</tr>
-<tr>
 <td><a href='#org.pitest.mutationtest.report.html.SourceFile@382d820_70'>70</a></td> 
 <td></td>
 <td>
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@382d820_70'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteInstructor<br/><b>Killed by : </b>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:admin_try_to_delete_a_instructor_not_found()]</span></span> replaced return value with null for edu/ucsb/cs156/frontiers/controllers/InstructorsController::deleteInstructor &rarr; KILLED</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteInstructor<br/><b>Killed by : </b>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:admin_try_to_delete_a_instructor_not_found()]</span></span> negated conditional &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@382d820_74'>74</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@382d820_71'>71</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@382d820_74'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@382d820_71'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteInstructor<br/><b>Killed by : </b>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_delete()]</span></span> removed call to edu/ucsb/cs156/frontiers/repositories/InstructorRepository::delete &rarr; KILLED</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteInstructor<br/><b>Killed by : </b>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:admin_try_to_delete_a_instructor_not_found()]</span></span> replaced return value with null for edu/ucsb/cs156/frontiers/controllers/InstructorsController::deleteInstructor &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -1181,6 +1184,17 @@
 <td>
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@382d820_75'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteInstructor<br/><b>Killed by : </b>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_delete()]</span></span> removed call to edu/ucsb/cs156/frontiers/repositories/InstructorRepository::delete &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@382d820_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@382d820_76'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteInstructor<br/><b>Killed by : </b>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_delete()]</span></span> replaced return value with null for edu/ucsb/cs156/frontiers/controllers/InstructorsController::deleteInstructor &rarr; KILLED</span>
 </div> 
@@ -1208,7 +1222,7 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:admin_try_to_delete_a_instructor_not_found()] (5 ms)</li><li>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_delete()] (7 ms)</li><li>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_get()] (8 ms)</li><li>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_post()] (5 ms)</li>
+<li>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_delete()] (9 ms)</li><li>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_get()] (8 ms)</li><li>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:admin_try_to_delete_a_instructor_not_found()] (7 ms)</li><li>edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.frontiers.controllers.InstructorsControllerTests]/[method:logged_in_admins_can_post()] (6 ms)</li>
 </ul>
 
 <br/>
