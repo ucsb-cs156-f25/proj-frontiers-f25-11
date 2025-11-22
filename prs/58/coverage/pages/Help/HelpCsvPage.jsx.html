@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>253/253</span>
+                <span class='fraction'>250/250</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>253/253</span>
+                <span class='fraction'>250/250</span>
             </div>
         
             
@@ -488,7 +488,9 @@
 <a name='L423'></a><a href='#L423'>423</a>
 <a name='L424'></a><a href='#L424'>424</a>
 <a name='L425'></a><a href='#L425'>425</a>
-<a name='L426'></a><a href='#L426'>426</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L426'></a><a href='#L426'>426</a>
+<a name='L427'></a><a href='#L427'>427</a>
+<a name='L428'></a><a href='#L428'>428</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -589,11 +591,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -620,6 +626,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -638,16 +645,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -674,6 +676,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -691,6 +694,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1010,14 +1014,18 @@ export default function HelpCsvPage() {
                     &lt;td&gt;Student Last&lt;/td&gt;
                     &lt;td&gt;Student Name&lt;/td&gt;
                     &lt;td&gt;
-                      We take everything after the last space; review students
-                      with suffixes to ensure accuracy.
+                      We split the value at the last space; double-check suffixes
+                      such as Jr. or III to ensure they end up on the correct
+                      side.
                     &lt;/td&gt;
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;Student First&lt;/td&gt;
                     &lt;td&gt;Student Name&lt;/td&gt;
-                    &lt;td&gt;Everything before the last space.&lt;/td&gt;
+                    &lt;td&gt;
+                      Everything before the final space (blank if no space is
+                      present).
+                    &lt;/td&gt;
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;Student ID&lt;/td&gt;
@@ -1031,17 +1039,18 @@ export default function HelpCsvPage() {
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;Section&lt;/td&gt;
-                    &lt;td&gt;Section Name&lt;/td&gt;
+                    &lt;td&gt;&amp;mdash;&lt;/td&gt;
                     &lt;td&gt;
-                      Ignored; Frontiers leaves the Section field blank for this
-                      format.
+                      Canvas includes a Section Name column, but Frontiers ignores
+                      it and leaves the Section field blank for this format.
                     &lt;/td&gt;
                   &lt;/tr&gt;
                 &lt;/tbody&gt;
               &lt;/table&gt;
               &lt;p className="text-muted"&gt;
                 All other columns from the Canvas “New Analytics” export are
-                ignored, so you can upload the file as-is.
+                ignored, so you can upload the file as-is; this includes Section
+                Name, so roster sections remain blank after the upload.
               &lt;/p&gt;
             &lt;/Accordion.Body&gt;
           &lt;/Accordion.Item&gt;
@@ -1084,16 +1093,12 @@ export default function HelpCsvPage() {
                     &lt;td&gt;Email&lt;/td&gt;
                     &lt;td&gt;&lt;/td&gt;
                   &lt;/tr&gt;
-                  &lt;tr&gt;
-                    &lt;td&gt;Section&lt;/td&gt;
-                    &lt;td&gt;(not provided)&lt;/td&gt;
-                    &lt;td&gt;Left blank; Canvas analytics columns are ignored.&lt;/td&gt;
-                  &lt;/tr&gt;
                 &lt;/tbody&gt;
               &lt;/table&gt;
               &lt;p className="text-muted"&gt;
                 Other analytics columns (grades, participation timestamps, etc.)
-                are ignored when the CSV is processed.
+                are ignored when the CSV is processed, so the Section column in
+                Frontiers remains blank for this format.
               &lt;/p&gt;
             &lt;/Accordion.Body&gt;
           &lt;/Accordion.Item&gt;
@@ -1118,6 +1123,7 @@ export default function HelpCsvPage() {
           &lt;/li&gt;
           &lt;li&gt;
             After the upload finishes, anyone still marked &lt;code&gt;DROPPED&lt;/code&gt;
+            {" "}
             is listed in the Dropped tab, and Frontiers queues them for removal
             from the linked GitHub organization.
           &lt;/li&gt;
@@ -1345,7 +1351,7 @@ export default function HelpCsvPage() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-21T04:45:17.952Z
+                at 2025-11-22T01:30:52.088Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
