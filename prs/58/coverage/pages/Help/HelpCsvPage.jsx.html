@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>249/249</span>
+                <span class='fraction'>244/244</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>249/249</span>
+                <span class='fraction'>244/244</span>
             </div>
         
             
@@ -481,16 +481,7 @@
 <a name='L416'></a><a href='#L416'>416</a>
 <a name='L417'></a><a href='#L417'>417</a>
 <a name='L418'></a><a href='#L418'>418</a>
-<a name='L419'></a><a href='#L419'>419</a>
-<a name='L420'></a><a href='#L420'>420</a>
-<a name='L421'></a><a href='#L421'>421</a>
-<a name='L422'></a><a href='#L422'>422</a>
-<a name='L423'></a><a href='#L423'>423</a>
-<a name='L424'></a><a href='#L424'>424</a>
-<a name='L425'></a><a href='#L425'>425</a>
-<a name='L426'></a><a href='#L426'>426</a>
-<a name='L427'></a><a href='#L427'>427</a>
-<a name='L428'></a><a href='#L428'>428</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L419'></a><a href='#L419'>419</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -828,15 +819,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -930,9 +912,9 @@ export default function HelpCsvPage() {
         &lt;h2&gt;Roster Student CSV Upload formats&lt;/h2&gt;
         &lt;p&gt;
           Instructors can upload a course roster from a CSV file. The following
-          formats are supported. If you would like your university's format to
-          be supported, please contact the Frontiers development team, supplying
-          a sample CSV (with fictional data).
+          formats are supported. If you would like your university&amp;apos;s format
+          to be supported, please contact the Frontiers development team,
+          supplying a sample CSV (with fictional data).
         &lt;/p&gt;
         &lt;Accordion data-testid="rosterUploadsAccordion"&gt;
           &lt;Accordion.Item eventKey="0"&gt;
@@ -996,7 +978,7 @@ export default function HelpCsvPage() {
             &lt;Accordion.Body&gt;
               &lt;p&gt;
                 The following CSV format can be obtained from the Canvas system
-                at Chico State, through the "New Analytics" feature:
+                at Chico State, through the &amp;quot;New Analytics&amp;quot; feature:
               &lt;/p&gt;
               &lt;pre className={"csvExample"} data-testid="chicoStateCsvExample"&gt;
                 {csvFixtures.chicoStateCanvas}
@@ -1171,7 +1153,7 @@ export default function HelpCsvPage() {
                     &lt;td&gt;Email&lt;/td&gt;
                     &lt;td&gt;email&lt;/td&gt;
                     &lt;td&gt;
-                      Student's email address used to match to the roster.
+                      Student&amp;apos;s email address used to match to the roster.
                     &lt;/td&gt;
                   &lt;/tr&gt;
                 &lt;/tbody&gt;
@@ -1233,37 +1215,28 @@ export default function HelpCsvPage() {
                       &lt;code&gt;STUDENTID&lt;/code&gt;
                     &lt;/td&gt;
                     &lt;td&gt;Student ID&lt;/td&gt;
-                    &lt;td&gt;Student's university ID (e.g., Perm # at UCSB)&lt;/td&gt;
+                    &lt;td&gt;Student&amp;apos;s university ID (e.g., Perm # at UCSB)&lt;/td&gt;
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;
                       &lt;code&gt;FIRSTNAME&lt;/code&gt;
                     &lt;/td&gt;
-                    &lt;td&gt;Student's first name&lt;/td&gt;
-                    &lt;td&gt;&lt;/td&gt;
+                    &lt;td&gt;Student&amp;apos;s first name&lt;/td&gt;
+                    &lt;td&gt;Required when re-uploading this CSV.&lt;/td&gt;
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;
                       &lt;code&gt;LASTNAME&lt;/code&gt;
                     &lt;/td&gt;
-                    &lt;td&gt;Student's last name&lt;/td&gt;
-                    &lt;td&gt;&lt;/td&gt;
+                    &lt;td&gt;Student&amp;apos;s last name&lt;/td&gt;
+                    &lt;td&gt;Required when re-uploading this CSV.&lt;/td&gt;
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;
                       &lt;code&gt;EMAIL&lt;/code&gt;
                     &lt;/td&gt;
-                    &lt;td&gt;Student's email address&lt;/td&gt;
-                    &lt;td&gt;&lt;/td&gt;
-                  &lt;/tr&gt;
-                  &lt;tr&gt;
-                    &lt;td&gt;
-                      &lt;code&gt;SECTION&lt;/code&gt;
-                    &lt;/td&gt;
-                    &lt;td&gt;Section value (if supplied in the original upload)&lt;/td&gt;
-                    &lt;td&gt;
-                      May be blank for formats that do not contain sections.
-                    &lt;/td&gt;
+                    &lt;td&gt;Student&amp;apos;s email address&lt;/td&gt;
+                    &lt;td&gt;Required when re-uploading this CSV.&lt;/td&gt;
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;
@@ -1277,14 +1250,14 @@ export default function HelpCsvPage() {
                       &lt;code&gt;GITHUBID&lt;/code&gt;
                     &lt;/td&gt;
                     &lt;td&gt;GitHub user ID&lt;/td&gt;
-                    &lt;td&gt;Student's GitHub account ID, if connected&lt;/td&gt;
+                    &lt;td&gt;Student&amp;apos;s GitHub account ID, if connected&lt;/td&gt;
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;
                       &lt;code&gt;GITHUBLOGIN&lt;/code&gt;
                     &lt;/td&gt;
                     &lt;td&gt;GitHub username&lt;/td&gt;
-                    &lt;td&gt;Student's GitHub username, if connected&lt;/td&gt;
+                    &lt;td&gt;Student&amp;apos;s GitHub username, if connected&lt;/td&gt;
                   &lt;/tr&gt;
                   &lt;tr&gt;
                     &lt;td&gt;
@@ -1351,7 +1324,7 @@ export default function HelpCsvPage() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-22T02:22:45.360Z
+                at 2025-11-24T05:16:24.836Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
