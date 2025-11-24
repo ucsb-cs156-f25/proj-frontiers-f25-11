@@ -2,6 +2,7 @@
 
 import edu.ucsb.cs156.frontiers.entities.Course;
 import edu.ucsb.cs156.frontiers.entities.Job;
+import edu.ucsb.cs156.frontiers.enums.RepositoryCreationTarget;
 import edu.ucsb.cs156.frontiers.enums.RepositoryPermissions;
 import edu.ucsb.cs156.frontiers.errors.EntityNotFoundException;
 import edu.ucsb.cs156.frontiers.errors.NoLinkedOrganizationException;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = &quot;Repository Controller&quot;)
 @RestController
 @RequestMapping(&quot;/api/repos&quot;)
-<span class="fc" id="L24">public class RepositoryController extends ApiController {</span>
+<span class="fc" id="L25">public class RepositoryController extends ApiController {</span>
 
   @Autowired RepositoryService repositoryService;
 
@@ -30,13 +31,15 @@ import org.springframework.web.bind.annotation.RestController;
   @Autowired CourseRepository courseRepository;
 
   /**
-   * Fires a job that creates a repo for every RosterStudent with a linked user with a GitHub
-   * account.
+   * Fires a job that creates a repo for students and/or staff members with GitHub accounts.
    *
    * @param courseId ID of course to create repos for
    * @param repoPrefix each repo created will begin with this prefix, followed by a dash and the
-   *     student's GitHub username
+   *     GitHub username
    * @param isPrivate determines whether the repository being created is private
+   * @param permissions the permissions level to grant to the repository collaborators
+   * @param creationTarget determines who gets repositories: STUDENTS_ONLY (default), STAFF_ONLY, or
+   *     STUDENTS_AND_STAFF
    * @return the {@link edu.ucsb.cs156.frontiers.entities.Job Job} started to create the repos.
    */
   @PostMapping(&quot;/createRepos&quot;)
@@ -45,23 +48,25 @@ import org.springframework.web.bind.annotation.RestController;
       @RequestParam Long courseId,
       @RequestParam String repoPrefix,
       @RequestParam Optional&lt;Boolean&gt; isPrivate,
-      @RequestParam RepositoryPermissions permissions) {
-<span class="fc" id="L49">    Course course =</span>
+      @RequestParam RepositoryPermissions permissions,
+      @RequestParam Optional&lt;RepositoryCreationTarget&gt; creationTarget) {
+<span class="fc" id="L53">    Course course =</span>
         courseRepository
-<span class="fc" id="L51">            .findById(courseId)</span>
-<span class="fc" id="L52">            .orElseThrow(() -&gt; new EntityNotFoundException(Course.class, courseId));</span>
-<span class="fc bfc" id="L53" title="All 4 branches covered.">    if (course.getOrgName() == null || course.getInstallationId() == null) {</span>
-<span class="fc" id="L54">      throw new NoLinkedOrganizationException(course.getCourseName());</span>
+<span class="fc" id="L55">            .findById(courseId)</span>
+<span class="fc" id="L56">            .orElseThrow(() -&gt; new EntityNotFoundException(Course.class, courseId));</span>
+<span class="fc bfc" id="L57" title="All 4 branches covered.">    if (course.getOrgName() == null || course.getInstallationId() == null) {</span>
+<span class="fc" id="L58">      throw new NoLinkedOrganizationException(course.getCourseName());</span>
     } else {
       CreateStudentRepositoriesJob job =
-<span class="fc" id="L57">          CreateStudentRepositoriesJob.builder()</span>
-<span class="fc" id="L58">              .repositoryPrefix(repoPrefix)</span>
-<span class="fc" id="L59">              .isPrivate(isPrivate.orElse(false))</span>
-<span class="fc" id="L60">              .repositoryService(repositoryService)</span>
-<span class="fc" id="L61">              .course(course)</span>
-<span class="fc" id="L62">              .permissions(permissions)</span>
-<span class="fc" id="L63">              .build();</span>
-<span class="fc" id="L64">      return jobService.runAsJob(job);</span>
+<span class="fc" id="L61">          CreateStudentRepositoriesJob.builder()</span>
+<span class="fc" id="L62">              .repositoryPrefix(repoPrefix)</span>
+<span class="fc" id="L63">              .isPrivate(isPrivate.orElse(false))</span>
+<span class="fc" id="L64">              .repositoryService(repositoryService)</span>
+<span class="fc" id="L65">              .course(course)</span>
+<span class="fc" id="L66">              .permissions(permissions)</span>
+<span class="fc" id="L67">              .creationTarget(creationTarget.orElse(RepositoryCreationTarget.STUDENTS_ONLY))</span>
+<span class="fc" id="L68">              .build();</span>
+<span class="fc" id="L69">      return jobService.runAsJob(job);</span>
     }
   }
 }
