@@ -7,6 +7,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -49,6 +50,7 @@ public class AssignmentsControllerTests extends ControllerTestCase {
   @MockitoBean private JobService service;
 
   final String assignmentPostEndpoint = "/api/assignments/post";
+  final String assignmentGetEndpoint = "/api/assignments";
 
   Course course1 =
       Course.builder()
@@ -133,5 +135,58 @@ public class AssignmentsControllerTests extends ControllerTestCase {
 
     verify(courseRepository, times(1)).findById(eq(nonExistentCourseId));
     verify(assignmentRepository, times(0)).save(any(Assignment.class));
+  }
+
+  // GET
+  @Test
+  public void logged_out_users_cannot_get() throws Exception {
+    mockMvc.perform(get(assignmentGetEndpoint).param("id", "2")).andExpect(status().is(403));
+  }
+
+  @WithMockUser(roles = {"USER"})
+  @Test
+  public void logged_in_users_cannot_get() throws Exception {
+    mockMvc.perform(get(assignmentGetEndpoint).param("id", "2")).andExpect(status().is(403));
+  }
+
+  @WithInstructorCoursePermissions
+  @Test
+  public void logged_in_admins_can_get() throws Exception {
+    // arrage
+    Assignment expectedAssignment =
+        Assignment.builder()
+            .name("Test Assignment")
+            .asn_type(AssignmentType.TEAM)
+            .visibility(Visibility.PRIVATE)
+            .permission(RepositoryPermissions.WRITE)
+            .build();
+    when(assignmentRepository.findById(2l)).thenReturn(Optional.of(expectedAssignment));
+
+    // act
+    MvcResult response =
+        mockMvc
+            .perform(get(assignmentGetEndpoint).param("id", "2"))
+            .andExpect(status().isOk())
+            .andReturn();
+
+    // assert
+    verify(assignmentRepository, times(1)).findById(2l);
+    String expectedJson = mapper.writeValueAsString(expectedAssignment);
+    String responseString = response.getResponse().getContentAsString();
+    assertEquals(expectedJson, responseString);
+  }
+
+  @Test
+  @WithInstructorCoursePermissions
+  public void instructor_tries_to_get_nonexistent_assignment_and_gets_404() throws Exception {
+    long nonExistentId = 99L;
+    when(assignmentRepository.findById(nonExistentId)).thenReturn(Optional.empty());
+
+    mockMvc
+        .perform(get(assignmentGetEndpoint).param("id", String.valueOf(nonExistentId)))
+        .andExpect(status().isNotFound())
+        .andReturn();
+
+    verify(assignmentRepository, times(1)).findById(nonExistentId);
   }
 }

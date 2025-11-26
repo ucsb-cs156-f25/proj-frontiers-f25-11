@@ -53,4 +53,17 @@ public class AssignmentsController extends ApiController {
     Assignment savedAssignment = assignmentRepository.save(assignment);
     return savedAssignment;
   }
+
+  @Operation(summary = "Get a single assignment by id")
+  @GetMapping("")
+  public Assignment getAssignmentById(@Parameter(name = "id") @RequestParam Long id)
+      throws EntityNotFoundException {
+
+    Assignment assignment =
+        assignmentRepository
+            .findById(id)
+            .orElseThrow(() -> new EntityNotFoundException(Assignment.class, id));
+
+    return assignment;
+  }
 }
