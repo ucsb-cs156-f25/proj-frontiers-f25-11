@@ -63,7 +63,7 @@ import org.springframework.web.bind.annotation.*;
 <span class="fc" id="L63">    Assignment assignment =</span>
         assignmentRepository
 <span class="fc" id="L65">            .findById(id)</span>
-<span class="pc" id="L66">            .orElseThrow(() -&gt; new EntityNotFoundException(Assignment.class, id));</span>
+<span class="fc" id="L66">            .orElseThrow(() -&gt; new EntityNotFoundException(Assignment.class, id));</span>
 
 <span class="fc" id="L68">    return assignment;</span>
   }
